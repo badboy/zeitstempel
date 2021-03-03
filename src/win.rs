@@ -1,9 +1,10 @@
-use winapi::um::realtimeapiset::QueryUnbiasedInterruptTime;
-use winapi::um::winnt::PULONGLONG;
-
-extern "system" {
-    fn QueryInterruptTime(InterruptTime: PULONGLONG);
+mod bindings {
+    ::windows::include_bindings!();
 }
+
+use bindings::windows::win32::windows_programming::{
+    QueryInterruptTime, QueryUnbiasedInterruptTime,
+};
 
 /// Windows counts time in a system time unit of 100 nanoseconds.
 const SYSTEM_TIME_UNIT: u64 = 100;

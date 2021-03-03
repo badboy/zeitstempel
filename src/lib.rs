@@ -44,8 +44,8 @@ cfg_if::cfg_if! {
         mod linux;
         use linux as sys;
     } else if #[cfg(windows)] {
-        mod windows;
-        use windows as sys;
+        mod win;
+        use win as sys;
     } else {
         mod unsupported;
         use unsupported as sys;
