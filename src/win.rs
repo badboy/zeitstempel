@@ -2,9 +2,7 @@ mod bindings {
     ::windows::include_bindings!();
 }
 
-use bindings::windows::win32::windows_programming::{
-    QueryInterruptTime,
-};
+use bindings::windows::win32::windows_programming::QueryInterruptTime;
 
 /// Windows counts time in a system time unit of 100 nanoseconds.
 const SYSTEM_TIME_UNIT: u64 = 100;
