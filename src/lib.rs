@@ -1,31 +1,54 @@
+//! zeitstempel is German for "timestamp".
+//!
+//! ---
+//!
 //! Time's hard. Correct time is near impossible.
 //!
 //! This crate has one purpose: give us a timestamp as an integer, coming from a monotonic clock
 //! source, include time across suspend/hibernation of the host machine and let me compare it to
 //! other timestamps.
 //!
-//! [`std::time::Instant`] gives us some of that:
-//!
-//! 1. It's monotonic, guaranteed.
-//! 2. It can be compared to other timespans.
-//!
-//! However it can't be serialized and its not clear if it contains suspend/hibernation time across
-//! different operating systems.
-//!
-//! It's the developer's responsibility to only compare timestamps from the same clocksource.
+//! It becomes the developer's responsibility to only compare timestamps obtained from this clock source.
 //! Timestamps are not comparable across operating system reboots.
+//!
+//! # Why not `std::time::Instant`?
+//!
+//! [`std::time::Instant`] fulfills some of our requirements:
+//!
+//! * It's monotonic, guaranteed ([sort of][rustsource]).
+//! * It can be compared to other timespans.
+//!
+//! However:
+//!
+//! * It can't be serialized.
+//! * It's not guaranteed that the clock source it uses contains suspend/hibernation time across all operating systems.
+//!
+//! [rustsource]: https://doc.rust-lang.org/1.47.0/src/std/time.rs.html#213-237
 //!
 //! # Example
 //!
 //! ```
 //! # use std::{thread, time::Duration};
-//!
 //! let start = zeitstempel::now();
 //! thread::sleep(Duration::from_millis(2));
 //!
 //! let diff = Duration::from_nanos(zeitstempel::now() - start);
 //! assert!(diff >= Duration::from_millis(2));
 //! ```
+//!
+//! # Supported operating systems:
+//!
+//! We support the following operating systems:
+//!
+//! * Windows
+//! * macOS
+//! * Linux
+//! * Android
+//! * iOS
+//!
+//! For other operating systems there's a fallback to `std::time::Instant`,
+//! compared against a process-global fixed reference point.
+//! We don't guarantee that measured time includes time the system spends in sleep or hibernation.
 
 #![deny(missing_docs)]
 #![deny(broken_intra_doc_links)]
