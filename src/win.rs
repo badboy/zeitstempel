@@ -1,7 +1,19 @@
-use winapi::um::winnt::PULONGLONG;
+/// [PULONGLONG] is a pointer to [ULONGLONG], a 64-bit unsigned integer.
+///
+/// [PULONGLONG]: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types#PULONGLONG
+/// [ULONGLONG]: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types#ulonglong
+type PULONGLONG = *mut u64;
 
+/// Link against Windows' `mincore`.
 #[link(name = "mincore")]
 extern "system" {
+    /// Gets the current interrupt-time count.
+    ///
+    /// See [`QueryInterruptTime`].
+    ///
+    /// [`QueryInterruptTime`]: https://docs.microsoft.com/en-us/windows/win32/api/realtimeapiset/nf-realtimeapiset-queryinterrupttime
+    ///
+    /// Note: we define it ourselves, because it's not actually included in `winapi`.
     fn QueryInterruptTime(InterruptTime: PULONGLONG);
 }
 
