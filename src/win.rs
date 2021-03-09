@@ -1,6 +1,6 @@
 use winapi::um::winnt::PULONGLONG;
 
-#[link(name = "onecoreuap")]
+#[link(name = "mincore")]
 extern "system" {
     fn QueryInterruptTime(InterruptTime: PULONGLONG);
 }
