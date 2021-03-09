@@ -60,12 +60,12 @@ cfg_if::cfg_if! {
     } else if #[cfg(any(target_os = "linux", target_os = "android"))] {
         mod linux;
         use linux as sys;
-    } else if #[cfg(windows)] {
+    } else if #[cfg(all(windows, feature = "win10plus"))] {
         mod win;
         use win as sys;
     } else {
-        mod unsupported;
-        use unsupported as sys;
+        mod fallback;
+        use fallback as sys;
     }
 }
 

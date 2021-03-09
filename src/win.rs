@@ -1,3 +1,9 @@
+//! Timestamp implementation for Windows 10+ or Windows Server 2016+.
+//!
+//! Lower versions don't have the necessary API and should use the fallback.
+
+#![cfg(feature = "win10plus")]
+
 /// [PULONGLONG] is a pointer to [ULONGLONG], a 64-bit unsigned integer.
 ///
 /// [PULONGLONG]: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types#PULONGLONG
