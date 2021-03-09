@@ -31,6 +31,9 @@ jobs:
         components: rustfmt
         override: true
     - run: cargo test --all
+    - name: "Test with Windows 10+ feature"
+      run: cargo test --all --features win10plus
+      if: matrix.os == 'windows-latest'
     - run: cargo run --example uptime
 
   check_fmt_and_docs:
