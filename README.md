@@ -31,8 +31,9 @@ However:
 
 # Example
 
-```
-# use std::{thread, time::Duration};
+```rust
+use std::{thread, time::Duration};
+
 let start = zeitstempel::now();
 thread::sleep(Duration::from_millis(2));
 
