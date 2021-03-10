@@ -5,6 +5,7 @@ authors = ["Jan-Erik Rediger <jrediger@mozilla.com>"]
 edition = "2018"
 description = "A timestamp you can serialize, and it might include suspend time."
 license = "MPL-2.0"
+repository = "https://github.com/badboy/whatsys"
 
 [dependencies]
 cfg-if = "1.0.0"
