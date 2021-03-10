@@ -4,7 +4,7 @@
 //!
 //! Time's hard. Correct time is near impossible.
 //!
-//! This crate has one purpose: give us a timestamp as an integer, coming from a monotonic clock
+//! This crate has one purpose: give me a timestamp as an integer, coming from a monotonic clock
 //! source, include time across suspend/hibernation of the host machine and let me compare it to
 //! other timestamps.
 //!
@@ -36,11 +36,11 @@
 //! assert!(diff >= Duration::from_millis(2));
 //! ```
 //!
-//! # Supported operating systems:
+//! # Supported operating systems
 //!
 //! We support the following operating systems:
 //!
-//! * Windows
+//! * Windows\*
 //! * macOS
 //! * Linux
 //! * Android
@@ -49,6 +49,8 @@
 //! For other operating systems there's a fallback to `std::time::Instant`,
 //! compared against a process-global fixed reference point.
 //! We don't guarantee that measured time includes time the system spends in sleep or hibernation.
+//!
+//! \* To use native Windows 10 functionality enable the `win10plus` feature. Otherwise it will use the fallback.
 
 #![deny(missing_docs)]
 #![deny(broken_intra_doc_links)]

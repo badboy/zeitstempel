@@ -1,7 +1,7 @@
 [package]
 name = "zeitstempel"
 version = "0.1.0"
-authors = ["Jan-Erik Rediger <janerik@fnordig.de>"]
+authors = ["Jan-Erik Rediger <jrediger@mozilla.com>"]
 edition = "2018"
 description = "A timestamp you can serialize, and it might include suspend time."
 license = "MPL-2.0"
