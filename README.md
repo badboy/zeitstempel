@@ -1,5 +1,9 @@
 # zeitstempel
 
+[![Crates.io version](https://img.shields.io/crates/v/zeitstempel.svg?style=flat-square)](https://crates.io/crates/zeitstempel)
+[![docs.rs docs](https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square)](https://docs.rs/zeitstempel)
+[![License: MPL 2.0](https://img.shields.io/github/license/badboy/zeitstempel?style=flat-square)](LICENSE)
+
 zeitstempel is German for "timestamp".
 
 ---
