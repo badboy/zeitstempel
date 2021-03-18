@@ -1,6 +1,6 @@
 [package]
 name = "zeitstempel"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Jan-Erik Rediger <jrediger@mozilla.com>"]
 edition = "2018"
 description = "A timestamp you can serialize, and it might include suspend time."
