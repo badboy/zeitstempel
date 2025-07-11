@@ -53,7 +53,7 @@
 //! \* To use native Windows 10 functionality enable the `win10plus` feature. Otherwise it will use the fallback.
 
 #![deny(missing_docs)]
-#![deny(broken_intra_doc_links)]
+#![deny(rustdoc::broken_intra_doc_links)]
 
 cfg_if::cfg_if! {
     if #[cfg(any(target_os = "macos", target_os = "ios"))] {

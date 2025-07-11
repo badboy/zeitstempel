@@ -10,7 +10,7 @@
 /// [ULONGLONG]: https://docs.microsoft.com/en-us/windows/win32/winprog/windows-data-types#ulonglong
 type PULONGLONG = *mut u64;
 
-/// Link against Windows' `mincore`.
+// Link against Windows' `mincore`.
 #[link(name = "mincore")]
 extern "system" {
     /// Gets the current interrupt-time count.
