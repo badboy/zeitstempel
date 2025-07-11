@@ -63,6 +63,9 @@ cfg_if::cfg_if! {
         mod linux;
         use linux as sys;
     } else if #[cfg(all(windows, feature = "win10plus"))] {
+        mod win10;
+        use win10 as sys;
+    } else if #[cfg(windows)] {
         mod win;
         use win as sys;
     } else {
