@@ -57,6 +57,7 @@
 //! * Android
 //! * iOS
 //! * FreeBSD
+//! * OpenBSD
 //!
 //! For other operating systems there's a fallback to `std::time::Instant`,
 //! compared against a process-global fixed reference point.
