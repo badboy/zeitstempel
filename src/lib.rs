@@ -71,7 +71,7 @@ cfg_if::cfg_if! {
     if #[cfg(any(target_os = "macos", target_os = "ios"))] {
         mod mac;
         use mac as sys;
-    } else if #[cfg(any(target_os = "linux", target_os = "android", target_os = "freebsd"))] {
+    } else if #[cfg(any(target_os = "linux", target_os = "android", target_os = "freebsd", target_os = "openbsd"))] {
         mod unix;
         use unix as sys;
     } else if #[cfg(all(windows, feature = "win10plus"))] {

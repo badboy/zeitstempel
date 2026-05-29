@@ -38,7 +38,7 @@ pub fn now_awake() -> u64 {
     };
     #[cfg(any(target_os = "linux", target_os = "android"))]
     let clock = libc::CLOCK_MONOTONIC;
-    #[cfg(target_os = "freebsd")]
+    #[cfg(any(target_os = "freebsd", target_os = "openbsd"))]
     let clock = libc::CLOCK_UPTIME;
     unsafe {
         libc::clock_gettime(clock, &mut ts);
