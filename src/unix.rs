@@ -12,10 +12,7 @@ fn timespec_to_ns(ts: libc::timespec) -> u64 {
 ///
 /// [`clock_gettime`]: https://manpages.debian.org/buster/manpages-dev/clock_gettime.3.en.html
 pub fn now_including_suspend() -> u64 {
-    let mut ts = libc::timespec {
-        tv_sec: 0,
-        tv_nsec: 0,
-    };
+    let mut ts = libc::timespec::default();
     unsafe {
         libc::clock_gettime(libc::CLOCK_BOOTTIME, &mut ts);
     }
@@ -32,10 +29,7 @@ pub fn now_including_suspend() -> u64 {
 /// [`clock_gettime`]: https://manpages.debian.org/buster/manpages-dev/clock_gettime.3.en.html
 /// [`FreeBSD clock_gettime`]: https://man.freebsd.org/cgi/man.cgi?query=clock_gettime&manpath=FreeBSD+15.0-RELEASE
 pub fn now_awake() -> u64 {
-    let mut ts = libc::timespec {
-        tv_sec: 0,
-        tv_nsec: 0,
-    };
+    let mut ts = libc::timespec::default();
     #[cfg(any(target_os = "linux", target_os = "android"))]
     let clock = libc::CLOCK_MONOTONIC;
     #[cfg(any(target_os = "freebsd", target_os = "openbsd"))]
