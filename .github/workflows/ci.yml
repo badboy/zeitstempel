@@ -45,6 +45,29 @@ jobs:
           cargo test --all
           cargo run --example uptime
 
+  test-nightly:
+    name: Test on Nightly
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v7
+      with:
+        fetch-depth: 0
+    - uses: dtolnay/rust-toolchain@nightly
+      with:
+        components: rust-src
+        targets: armv7-unknown-linux-musleabihf
+
+    - name: Test
+      run: cargo test --all
+
+    - name: Check with newer MUSL
+      run: |
+        # Testing with time64 enabled in libc.
+        export RUST_LIBC_UNSTABLE_MUSL_V1_2_3=1
+        cargo check --target armv7-unknown-linux-musleabihf -Zbuild-std=core,alloc,std
+
+
   check_fmt_and_docs:
     name: Checking fmt and docs
     runs-on: ubuntu-latest
