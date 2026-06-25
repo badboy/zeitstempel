@@ -25,14 +25,17 @@ jobs:
       with:
         fetch-depth: 0
     - uses: dtolnay/rust-toolchain@stable
-      with:
-        components: rustfmt
+
     - run: cargo test --all
+
     - name: "Test with Windows 10+ feature"
-      run: cargo test --all --features win10plus
       if: matrix.os == 'windows-latest'
+      run: cargo test --all --features win10plus
+
     - run: cargo run --example uptime
+
     - name: Test in OpenBSD
+      if: matrix.os == 'ubuntu-latest'
       uses: vmactions/openbsd-vm@ac794a54cc49eef689bb2d9dff6ba77d35483029
       with:
         usesh: true
@@ -41,7 +44,6 @@ jobs:
         run: |
           cargo test --all
           cargo run --example uptime
-      if: matrix.os == 'ubuntu-latest'
 
   check_fmt_and_docs:
     name: Checking fmt and docs
